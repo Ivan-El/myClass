@@ -1,5 +1,6 @@
 const themeList = document.querySelector(".theme-list");
 const buttons = themeList.querySelectorAll(".theme-button");
+const root = document.documentElement;
 
 const themeListClickHandler = (evt) => {
   const button = evt.target.closest("button");
@@ -9,9 +10,10 @@ const themeListClickHandler = (evt) => {
   }
 
   buttons.forEach((btn) => {
-    console.log(btn);
     btn.classList.toggle("active", btn === button);
   });
+
+  root.dataset.themeName = button.dataset.themeSet;
 };
 
 themeList.addEventListener("click", themeListClickHandler);
